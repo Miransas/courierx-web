@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
@@ -16,7 +17,7 @@ const EXCLUDED_POSITIONS: { row: number; col: number }[] = [
 ];
 
 const isExcluded = (row: number, col: number) =>
-  EXCLUDED_POSITIONS.some((pos) => pos.row === pos.row && pos.col === col);
+  EXCLUDED_POSITIONS.some((pos) => pos.row === row && pos.col === col);
 
 const BULB_POSITIONS = Array.from({ length: GRID_SIZE }, (_, row) =>
   Array.from({ length: GRID_SIZE }, (_, col) => ({ row, col })),
@@ -35,7 +36,7 @@ type Spark = {
   color: string;
 };
 
-export function HeroSectionWithFlickeringLights() {
+export function HeroSection() {
   const [bulbStates, setBulbStates] = useState<BulbState[]>(() =>
     BULB_POSITIONS.map(() => "off")
   );
@@ -99,25 +100,29 @@ export function HeroSectionWithFlickeringLights() {
       {/* Ana İçerik */}
       <div className="relative z-10 mx-auto max-w-6xl px-4 w-full sm:px-6 md:px-8 lg:px-12">
         <h1 className="font-sans text-left text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1]">
-          Build high-performance <br className="hidden sm:block" /> 
-          apps with <span className="text-brand-primary drop-shadow-[0_0_20px_rgba(140,255,46,0.4)]">Miransas</span>
+          The open-source <br className="hidden sm:block" />
+          email API for <span className="text-brand-primary drop-shadow-[0_0_20px_rgba(140,255,46,0.4)]">developers</span>
         </h1>
         <p className="mt-4 max-w-2xl text-base font-normal text-zinc-400 sm:text-lg md:text-xl">
-          Next-generation workflow automation, custom high-performance modules, and production-ready components engineered for extreme speed.
+          Send transactional emails from your own infrastructure. Drop-in Resend-compatible API, full source code, and a worker you can self-host.
         </p>
 
         {/* Butonlar */}
         <div className="mt-8 flex flex-col items-start gap-4 sm:mt-10 sm:flex-row sm:items-center sm:gap-6">
-          <button
+          <a
+            href="/docs"
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
             className="cursor-pointer rounded-xl bg-brand-primary px-6 py-3 text-sm font-semibold text-brand-bg transition duration-200 hover:shadow-[0_0_25px_#8CFF2E] active:scale-98"
           >
-            Explore Components
-          </button>
-          <button className="cursor-pointer text-sm font-medium text-zinc-400 hover:text-white transition-colors sm:text-base flex items-center gap-2">
-            View core modules &rarr;
-          </button>
+            Read the docs
+          </a>
+          <a
+            href="https://github.com/miransas/courierx-api"
+            className="cursor-pointer text-sm font-medium text-zinc-400 hover:text-white transition-colors sm:text-base flex items-center gap-2"
+          >
+            View on GitHub &rarr;
+          </a>
         </div>
 
         {/* ================= KALIN LAZER BEAM'Lİ KART KATMANI ================= */}
@@ -160,7 +165,7 @@ export function HeroSectionWithFlickeringLights() {
           <div className="relative z-20 rounded-[14px] bg-zinc-950 p-1 sm:p-2">
             <img
               src="https://assets.aceternity.com/linear-demo.webp"
-              alt="Miransas Dashboard"
+              alt="CourierX console preview"
               width={1000}
               height={1000}
               className="h-full w-full rounded-xl object-cover object-bottom-right grayscale contrast-125 opacity-75"

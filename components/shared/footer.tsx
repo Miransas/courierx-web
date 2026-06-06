@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import Link from "next/link";
@@ -20,21 +21,21 @@ const footerNavigation = {
   links: {
     product: [
       { name: "Features", href: "#features" },
-      { name: "Pricing", href: "#pricing" },
-      { name: "Integrations", href: "#integrations" },
-      { name: "Roadmap", href: "#roadmap" },
+      { name: "Pricing", href: "/pricing" },
+      { name: "Changelog", href: "/changelog" },
+      { name: "Roadmap", href: "/roadmap" },
     ],
     company: [
-      { name: "About Us", href: "/about" },
+      { name: "About", href: "/about" },
       { name: "Blog", href: "/blog" },
-      { name: "Careers", href: "/careers" },
+      { name: "Open Source", href: "https://github.com/miransas/courierx-api" },
       { name: "Contact", href: "/contact" },
     ],
     resources: [
       { name: "Documentation", href: "/docs" },
-      { name: "API Reference", href: "/api" },
-      { name: "Community", href: "/community" },
-      { name: "Status", href: "/status" },
+      { name: "API Reference", href: "/docs/api" },
+      { name: "SDKs", href: "/docs/sdks" },
+      { name: "Status", href: "https://status.courierx.io" },
     ],
     legal: [
       { name: "Privacy Policy", href: "/privacy" },
@@ -57,17 +58,14 @@ export default function Footer() {
           {/* Marka ve Sosyal Blok (4/12 Sütun) */}
           <div className="md:col-span-4 flex flex-col gap-5 pr-8">
             <Link href="/" className="inline-flex items-center gap-2.5 active:scale-[0.98] transition-transform">
-              {/* Miransas'ın fütüristik 米 simge logosu */}
-              <div className="size-6 rounded-md bg-white text-black flex items-center justify-center font-bold text-xs select-none">
-                米
-              </div>
+              <img src="./favicon/favicon.svg" alt="CourierX Logo" className="h-6 w-auto" />
               <span className="text-xl font-bold tracking-tight text-white">
-                Miransas<span className="text-brand-primary">soft</span>
+                CourierX
               </span>
             </Link>
-            
+
             <p className="max-w-sm text-sm text-zinc-500 leading-relaxed antialiased">
-              Building next-generation software ecosystems for modern businesses. Secure, scalable, and engineered for production-ready speed.
+              Self-hosted transactional email infrastructure. Open source, developer-first, Resend-compatible.
             </p>
             
             {/* Sosyal Medya İkonları (Neon Yeşili Hover Destekli) */}
@@ -114,9 +112,9 @@ export default function Footer() {
         </div>
 
         {/* Alt Segment: Telif Hakları ve Yasal Bilgiler (Subdued Renk) */}
-        <div className="pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-medium text-zinc-600">
+        <div className="pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-md font-medium text-zinc-200">
           <div className="select-none">
-            &copy; {currentYear} Miransas. All rights reserved.
+            &copy; {currentYear}  CourierX · Part of Miransas
           </div>
           
           <div className="flex items-center gap-5 sm:gap-7">

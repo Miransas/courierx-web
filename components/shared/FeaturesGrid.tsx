@@ -12,17 +12,17 @@ export function FeaturesGrid() {
 
       <div className="mx-auto max-w-7xl relative z-10">
         
-        {/* Üst Düzey Kesikli Grid Yapısı - Miransas Dark Mode Karakteri */}
+        {/* Üst Düzey Kesikli Grid Yapısı - CourierX Dark Mode Karakteri */}
         <div className="grid grid-cols-1 md:grid-cols-3 border border-white/10 rounded-2xl overflow-hidden divide-y md:divide-y-0 md:divide-x divide-dashed divide-white/10 bg-zinc-950/80 backdrop-blur-sm shadow-[0_0_40px_rgba(0,0,0,0.5)]">
           
           {/* ================= KART 1: Lazer Akışlı Animasyonlar ================= */}
           <div className="p-8 flex flex-col justify-between h-[380px] relative group overflow-hidden hover:bg-white/[0.02] transition-colors duration-500">
             <div>
               <h3 className="text-xl font-semibold tracking-tight text-white mb-3">
-                Stunning Animations with Motion
+                Drop-in API, Resend-compatible
               </h3>
               <p className="text-sm text-zinc-400 leading-relaxed max-w-[290px]">
-                Bring your user interfaces to life with creative, beautifully crafted motion components engineered for extreme speed.
+                Migrate in minutes. Same request body, same response shape — just point your SDK at your own CourierX server.
               </p>
             </div>
 
@@ -41,9 +41,10 @@ export function FeaturesGrid() {
                 {/* Kılavuz Çizgileri - Karanlık */}
                 <line x1="0" y1="25" x2="320" y2="25" className="stroke-white/5" strokeWidth="1" />
                 <line x1="0" y1="95" x2="320" y2="95" className="stroke-white/5" strokeWidth="1" />
-                
+
                 {/* Ana Kılavuz Eğrisi */}
                 <path
+                  id="laser-path"
                   d="M 0,60 C 50,60 70,110 110,100 C 160,85 180,50 220,55 C 270,60 280,25 320,70"
                   className="stroke-white/10"
                   strokeWidth="1.5"
@@ -60,23 +61,20 @@ export function FeaturesGrid() {
                   animate={{ pathOffset: 1.3 }}
                   transition={{ duration: 3.5, repeat: Infinity, ease: "linear" }}
                 />
-              </svg>
 
-              {/* Lazer Üzerinde Kayan Karanlık Çekirdek */}
-              <motion.div
-                className="absolute size-10 rounded-full bg-zinc-950 border border-[#8CFF2E]/50 flex items-center justify-center shadow-[0_0_20px_rgba(140,255,46,0.4)] z-10 select-none"
-                animate={{
-                  x: [-10, 48, 102, 155, 212, 268, 310],
-                  y: [4, 18, 44, 28, 0, -26, 12],
-                }}
-                transition={{ duration: 3.5, repeat: Infinity, ease: "linear" }}
-              >
-                <div className="size-4 rounded-full bg-[#8CFF2E] blur-[2px] absolute" />
-                {/* Geometrik Miransas Çekirdeği */}
-                <svg className="size-5 fill-[#8CFF2E] relative z-20" viewBox="0 0 24 24">
-                  <path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z" />
-                </svg>
-              </motion.div>
+                {/* Yolu Takip Eden Çekirdek — animateMotion ile pürüzsüz */}
+                <g style={{ filter: "drop-shadow(0 0 10px rgba(140,255,46,0.55))" }}>
+                  <circle r="12" fill="#0a0a0a" stroke="#8CFF2E" strokeOpacity="0.55" strokeWidth="1" />
+                  <circle r="5" fill="#8CFF2E" opacity="0.35" />
+                  <path
+                    d="M0,-5 L1.5,-1.5 L5,0 L1.5,1.5 L0,5 L-1.5,1.5 L-5,0 L-1.5,-1.5 Z"
+                    fill="#8CFF2E"
+                  />
+                  <animateMotion dur="3.5s" repeatCount="indefinite" rotate="0">
+                    <mpath href="#laser-path" />
+                  </animateMotion>
+                </g>
+              </svg>
             </div>
           </div>
 
@@ -84,27 +82,27 @@ export function FeaturesGrid() {
           <div className="p-8 flex flex-col justify-between h-[380px] relative group overflow-hidden hover:bg-white/[0.02] transition-colors duration-500">
             <div>
               <h3 className="text-xl font-semibold tracking-tight text-white mb-3">
-                Primitive-First Foundation
+                Postgres-backed queue, no Redis
               </h3>
               <p className="text-sm text-zinc-400 leading-relaxed max-w-[290px]">
-                A highly optimized foundation built for raw performance. Ideal for complex tunneling and system-level UI.
+                Built on FOR UPDATE SKIP LOCKED for safe concurrent workers. One less service to run, one less thing to break.
               </p>
             </div>
 
             {/* Veri Otobanı */}
             <div className="relative w-full h-44 flex items-center justify-center">
               
-              {/* Sol Üst Düğüm (b) */}
+              {/* Sol Üst Düğüm (api) */}
               <div className="absolute top-4 left-14 size-12 rounded-xl border border-white/10 bg-zinc-950 flex items-center justify-center text-sm font-semibold text-zinc-300 shadow-[0_0_15px_rgba(0,0,0,0.8)] select-none">
-                <span className="text-[#8CFF2E]">b</span>
+                <span className="text-[#8CFF2E]">api</span>
               </div>
 
-              {/* Sağ Üst Düğüm (t) */}
+              {/* Sağ Üst Düğüm (smtp) */}
               <div className="absolute top-4 right-14 size-12 rounded-xl border border-white/10 bg-zinc-950 flex items-center justify-center text-sm font-semibold text-zinc-300 shadow-[0_0_15px_rgba(0,0,0,0.8)] select-none">
-                <span className="text-[#8CFF2E]">t</span>
+                <span className="text-[#8CFF2E]">smtp</span>
               </div>
 
-              {/* Merkez Alt Çekirdek (Miransas Hub) */}
+              {/* Merkez Alt Çekirdek (CourierX Hub) */}
               <div className="absolute bottom-2 size-14 rounded-xl border border-[#8CFF2E]/30 bg-zinc-950 flex items-center justify-center p-1 shadow-[0_0_30px_rgba(140,255,46,0.15)] relative">
                 <motion.div 
                   className="absolute inset-0 rounded-xl bg-[#8CFF2E]/20 blur-md"
@@ -112,26 +110,52 @@ export function FeaturesGrid() {
                   transition={{ duration: 2, repeat: Infinity }}
                 />
                 <div className="size-10 rounded-lg bg-zinc-900 border border-white/5 flex items-center justify-center font-bold text-base relative z-10 text-white">
-                  米
+                  C
                 </div>
               </div>
 
               {/* Çift Şeritli Fiber Kanallar */}
               <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 320 176">
                 {/* Sol Hat */}
-                <line x1="84" y1="56" x2="144" y2="126" className="stroke-white/5" strokeWidth="2" />
+                <line x1="84" y1="56" x2="144" y2="126" className="stroke-white/[0.08]" strokeWidth="1.5" />
                 {/* Sağ Hat */}
-                <line x1="236" y1="56" x2="176" y2="126" className="stroke-white/5" strokeWidth="2" />
+                <line x1="236" y1="56" x2="176" y2="126" className="stroke-white/[0.08]" strokeWidth="1.5" />
 
-                {/* Kanallardan Akan Neon Yeşili Veri Paketleri */}
-                <motion.circle r="2.5" fill="#8CFF2E" className="drop-shadow-[0_0_8px_#8CFF2E]"
-                  animate={{ cx: [84, 144], cy: [56, 126], opacity: [0, 1, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity, ease: "easeIn" }}
-                />
-                <motion.circle r="2.5" fill="#8CFF2E" className="drop-shadow-[0_0_8px_#8CFF2E]"
-                  animate={{ cx: [236, 176], cy: [56, 126], opacity: [0, 1, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity, ease: "easeIn", delay: 0.75 }}
-                />
+                {/* Sol Akış — 3 staggered paket */}
+                {[0, 0.5, 1.0].map((delay, i) => (
+                  <motion.circle
+                    key={`a-${i}`}
+                    r="2"
+                    fill="#8CFF2E"
+                    className="drop-shadow-[0_0_6px_#8CFF2E]"
+                    animate={{ cx: [84, 144], cy: [56, 126], opacity: [0, 1, 1, 0] }}
+                    transition={{
+                      duration: 1.5,
+                      repeat: Infinity,
+                      ease: "linear",
+                      delay,
+                      times: [0, 0.15, 0.85, 1],
+                    }}
+                  />
+                ))}
+
+                {/* Sağ Akış — 3 staggered paket */}
+                {[0.25, 0.75, 1.25].map((delay, i) => (
+                  <motion.circle
+                    key={`s-${i}`}
+                    r="2"
+                    fill="#8CFF2E"
+                    className="drop-shadow-[0_0_6px_#8CFF2E]"
+                    animate={{ cx: [236, 176], cy: [56, 126], opacity: [0, 1, 1, 0] }}
+                    transition={{
+                      duration: 1.5,
+                      repeat: Infinity,
+                      ease: "linear",
+                      delay,
+                      times: [0, 0.15, 0.85, 1],
+                    }}
+                  />
+                ))}
               </svg>
             </div>
           </div>
@@ -140,35 +164,35 @@ export function FeaturesGrid() {
           <div className="p-8 flex flex-col justify-between h-[380px] relative group overflow-hidden hover:bg-white/[0.02] transition-colors duration-500">
             <div>
               <h3 className="text-xl font-semibold tracking-tight text-white mb-3">
-                Command Line Precision
+                Self-host in under 5 minutes
               </h3>
               <p className="text-sm text-zinc-400 leading-relaxed">
-                Deploy infrastructure instantly via CLI. Pure speed, zero friction. Copy-paste high performance modules.
+                One binary for the API, one for the worker. Docker, systemd, or bare metal — your call.
               </p>
             </div>
 
             {/* Geometrik Kılçık Şeması - Terminal Havası */}
             <div className="relative w-full h-36 flex items-center justify-between px-2">
               
-              {/* Sol Taraf: Themes Kutusu */}
+              {/* Sol Taraf: courierx Kutusu */}
               <div className="border border-white/10 bg-zinc-950 rounded-xl px-3 py-1.5 flex items-center gap-2 z-10 shadow-lg">
-                <span className="text-sm font-bold text-[#8CFF2E]">米</span>
-                <span className="text-xs font-medium text-zinc-300">Modules</span>
+                <span className="text-sm font-bold text-[#8CFF2E]">C</span>
+                <span className="text-xs font-medium text-zinc-300">courierx</span>
               </div>
 
               {/* Rozetler (Hacker Tarzı) */}
               <div className="absolute inset-x-0 top-0 bottom-0 pointer-events-none z-20">
                 <div className="absolute top-2 left-[44%] border border-[#8CFF2E]/20 bg-zinc-950 text-[10px] px-2 py-0.5 rounded-md text-[#8CFF2E] font-mono">
-                  CLI
+                  API
                 </div>
                 <div className="absolute top-2 left-[64%] border border-white/10 bg-zinc-950 text-[10px] px-2 py-0.5 rounded-md text-zinc-500 font-mono">
-                  BIN
+                  WORKER
                 </div>
                 <div className="absolute bottom-2 left-[46%] border border-white/10 bg-zinc-950 text-[10px] px-2 py-0.5 rounded-md text-zinc-400 font-mono flex items-center gap-1">
-                  <Copy className="size-2.5 text-[#8CFF2E]" /> Copy
+                  <Copy className="size-2.5 text-[#8CFF2E]" /> SES
                 </div>
                 <div className="absolute bottom-2 left-[72%] border border-white/10 bg-zinc-950 text-[10px] px-2 py-0.5 rounded-md text-zinc-500 font-mono">
-                  SYS
+                  RESEND
                 </div>
               </div>
 
@@ -183,10 +207,33 @@ export function FeaturesGrid() {
                 <line x1="184" y1="72" x2="184" y2="116" className="stroke-white/5" strokeWidth="1.5" />
                 <line x1="258" y1="72" x2="258" y2="116" className="stroke-white/5" strokeWidth="1.5" />
 
-                {/* Hat Boyunca İlerleyen Neon Veri Işığı */}
+                {/* Ana Yatay Akış */}
                 <motion.circle r="2" fill="#8CFF2E" className="drop-shadow-[0_0_10px_#8CFF2E]"
+                  cy="72"
                   animate={{ cx: [102, 255] }}
                   transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
+                />
+
+                {/* Dik Damlalar — 4 staggered paket */}
+                <motion.circle r="1.5" fill="#8CFF2E" className="drop-shadow-[0_0_6px_#8CFF2E]"
+                  cx="152"
+                  animate={{ cy: [28, 72], opacity: [0, 1, 1, 0] }}
+                  transition={{ duration: 1.2, repeat: Infinity, ease: "linear", delay: 0, times: [0, 0.2, 0.8, 1] }}
+                />
+                <motion.circle r="1.5" fill="#8CFF2E" className="drop-shadow-[0_0_6px_#8CFF2E]"
+                  cx="216"
+                  animate={{ cy: [28, 72], opacity: [0, 1, 1, 0] }}
+                  transition={{ duration: 1.2, repeat: Infinity, ease: "linear", delay: 0.4, times: [0, 0.2, 0.8, 1] }}
+                />
+                <motion.circle r="1.5" fill="#8CFF2E" className="drop-shadow-[0_0_6px_#8CFF2E]"
+                  cx="184"
+                  animate={{ cy: [72, 116], opacity: [0, 1, 1, 0] }}
+                  transition={{ duration: 1.2, repeat: Infinity, ease: "linear", delay: 0.6, times: [0, 0.2, 0.8, 1] }}
+                />
+                <motion.circle r="1.5" fill="#8CFF2E" className="drop-shadow-[0_0_6px_#8CFF2E]"
+                  cx="258"
+                  animate={{ cy: [72, 116], opacity: [0, 1, 1, 0] }}
+                  transition={{ duration: 1.2, repeat: Infinity, ease: "linear", delay: 1.0, times: [0, 0.2, 0.8, 1] }}
                 />
               </svg>
 

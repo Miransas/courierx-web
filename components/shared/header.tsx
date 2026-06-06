@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useState, useEffect } from "react";
@@ -28,10 +29,8 @@ export function Header() {
         
         {/* Logo */}
         <Link href="/" className="inline-flex items-center gap-2 text-white font-bold text-lg tracking-tight group">
-          <div className="size-6 rounded-md bg-white text-black flex items-center justify-center font-bold text-xs group-hover:bg-brand-primary transition-colors">
-            米
-          </div>
-          <span>Miransas</span>
+           <img src="./favicon/favicon.svg" alt="CourierX Logo" className="h-6 w-6 group-hover:animate-pulse" />
+          <span>CourierX</span>
         </Link>
 
         {/* Desktop Nav */}
@@ -45,14 +44,14 @@ export function Header() {
 
         {/* CTA Butonları */}
         <div className="hidden md:flex items-center gap-4">
-          <Link href="/login" className="text-sm font-medium text-zinc-400 hover:text-white transition-colors">
+          <Link href="https://console.courierx.io/login" className="text-sm font-medium text-zinc-400 hover:text-white transition-colors">
             Sign In
           </Link>
           <Link
-            href="/dashboard"
+            href="https://console.courierx.io"
             className="group relative inline-flex h-9 items-center justify-center gap-2 rounded-lg bg-brand-primary px-4 text-sm font-bold text-zinc-950 transition-all hover:shadow-[0_0_20px_rgba(140,255,46,0.4)] active:scale-95"
           >
-            <span>Dashboard</span>
+            <span>Get started</span>
             <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" strokeWidth={3} />
           </Link>
         </div>
@@ -75,9 +74,9 @@ export function Header() {
             </Link>
           ))}
           <div className="border-t border-white/5 pt-6 flex flex-col gap-4">
-            <Link href="/login" onClick={() => setIsMobileMenuOpen(false)} className="text-center text-zinc-400">Sign In</Link>
-            <Link href="/dashboard" onClick={() => setIsMobileMenuOpen(false)} className="h-12 flex items-center justify-center rounded-lg bg-brand-primary text-zinc-950 font-bold">
-              Dashboard
+            <Link href="https://console.courierx.io/login" onClick={() => setIsMobileMenuOpen(false)} className="text-center text-zinc-400">Sign In</Link>
+            <Link href="https://console.courierx.io" onClick={() => setIsMobileMenuOpen(false)} className="h-12 flex items-center justify-center rounded-lg bg-brand-primary text-zinc-950 font-bold">
+              Get started
             </Link>
           </div>
         </div>

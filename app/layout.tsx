@@ -21,8 +21,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Miransas Dashboard",
-  description: "High-performance workspace",
+  title: "CourierX — Self-hosted email API",
+  description:
+    "Send transactional emails from your own infrastructure. Open source, Resend-compatible API.",
   // Public klasöründeki ikonlarını buraya bağladık
   icons: {
     icon: "/favicon.ico", // Standart tarayıcı ikonu
@@ -48,6 +49,7 @@ export default function RootLayout({
           attribute="class"
           defaultTheme="dark"
           enableSystem
+          forcedTheme="dark"   
           disableTransitionOnChange
         >
           <Header />

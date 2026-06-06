@@ -14,18 +14,18 @@ export default function LoginPage() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#8CFF2E]/10 blur-[150px] rounded-full" />
         
         <Link href="/" className="inline-flex items-center gap-2 text-white font-bold text-xl relative z-10">
-          <div className="size-8 rounded-lg bg-white text-black flex items-center justify-center font-bold text-sm">米</div>
-          Miransas
+          <div className="size-8 rounded-lg bg-white text-black flex items-center justify-center font-bold text-sm">C</div>
+          CourierX
         </Link>
-        
+
         <div className="relative z-10">
-          <h1 className="text-4xl font-bold mb-4">Engineering at <br/> the edge.</h1>
+          <h1 className="text-4xl font-bold mb-4">Send mail from <br/> your own infrastructure.</h1>
           <p className="text-zinc-500 max-w-sm leading-relaxed">
-            Access your Miransas workspace to manage tunneling, automation, and system monitoring infrastructure.
+            Sign in to your CourierX console. Manage API keys, view logs, and configure providers.
           </p>
         </div>
-        
-        <p className="text-xs text-zinc-600">© 2026 Miransas. All rights reserved.</p>
+
+        <p className="text-xs text-zinc-600">© 2026 CourierX · Part of Miransas</p>
       </div>
 
       {/* Sağ Panel: Auth Form */}
@@ -57,7 +57,7 @@ export default function LoginPage() {
             {/* Email Girişi */}
             <input 
               type="email" 
-              placeholder="name@miransas.com" 
+              placeholder="you@yourdomain.com"
               className="w-full h-11 bg-zinc-900 border border-white/10 rounded-lg px-4 text-sm focus:outline-none focus:border-[#8CFF2E] transition-colors"
             />
             <button className="w-full h-11 bg-[#8CFF2E] text-black font-bold rounded-lg hover:shadow-[0_0_20px_rgba(140,255,46,0.3)] transition-all active:scale-[0.98]">
