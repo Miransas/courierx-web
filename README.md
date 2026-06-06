@@ -1,49 +1,54 @@
 # CourierX Web
 
-The marketing site for [CourierX](https://courierx.io) — the open-source, self-hosted transactional email API.
+The marketing site for [CourierX](https://courierx.io) — an open-source, self-hosted email API for developers.
 
-> Live at [courierx.io](https://courierx.io)
+> Send transactional emails from your own infrastructure. Drop-in Resend-compatible API, full source code, and a worker you can self-host.
 
 ## Stack
 
-- Next.js 16 (App Router)
-- TypeScript
-- Tailwind CSS v4
-- Framer Motion (animations)
-- shadcn/ui + Radix
-- IBM Plex Sans + JetBrains Mono
+- **Framework:** Next.js 16 (App Router)
+- **Styling:** Tailwind CSS v4 + shadcn/ui primitives
+- **Animations:** Framer Motion
+- **Smooth scroll:** Lenis
+- **Fonts:** IBM Plex Sans + JetBrains Mono
+- **Deployment:** Vercel
 
-## Quick start
+## Local development
 
 ```bash
-git clone https://github.com/miransas/courierx-web
+git clone https://github.com/sardorazimov/courierx-web.git
 cd courierx-web
 npm install
 npm run dev
 ```
 
-Open `http://localhost:3000`.
+Open `http://localhost:3000` in your browser.
 
-## Design
+## Project structure
 
-- Dark base (`#050505`)
-- Accent: neon green `#8CFF2E`
-- Engineering-focused, Vercel/Linear-inspired
+```
+app/
+  layout.tsx          → root layout, fonts, metadata, OG image
+  page.tsx            → landing page composition
+  opengraph-image.tsx → dynamic OG card (1200x630)
+components/
+  shared/             → page-level sections (hero, code snippet, pricing, FAQ, etc)
+  ui/                 → reusable primitives (button, card, input)
+  provider/           → context providers (theme, smooth scroll)
+public/
+  console-preview.png → console screenshot used in the browser-frame mockup
+```
 
-## Related repos
+## Other repos in the CourierX project
 
-| Repo | Purpose | Status |
-|------|---------|--------|
-| [courierx-api](https://github.com/miransas/courierx-api) | HTTP API server (Rust) | Public |
-| [courierx-worker](https://github.com/miransas/courierx-worker) | Queue consumer (Rust) | Public |
-| courierx-console | Dashboard (Next.js) | Private |
-| courierx-sdk-js | `@courierx/node` SDK | Planned |
-| courierx-docs | docs.courierx.io | Planned |
+- [courierx-api](https://github.com/Miransas/courierx-api) — the Rust HTTP API (Axum + SQLx + Postgres)
+- [courierx-worker](https://github.com/Miransas/courierx-worker) — the queue consumer that delivers emails
+- `courierx-console` — the dashboard (private until launch)
+
+## Brand
+
+CourierX is built under the [Miransas](https://miransas.com) brand by [@sardorazimov](https://github.com/sardorazimov).
 
 ## License
 
-MIT — see [LICENSE](./LICENSE).
-
----
-
-Part of [Miransas](https://miransas.com).
+MIT — see [LICENSE](./LICENSE)

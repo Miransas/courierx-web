@@ -1,8 +1,7 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 const GRID_SIZE = 6;
@@ -40,7 +39,6 @@ export function HeroSection() {
   const [bulbStates, setBulbStates] = useState<BulbState[]>(() =>
     BULB_POSITIONS.map(() => "off")
   );
-  const [hovered, setHovered] = useState(false);
 
   useEffect(() => {
     const shuffledIndices = [...Array(BULB_POSITIONS.length).keys()].sort(
@@ -111,8 +109,6 @@ export function HeroSection() {
         <div className="mt-8 flex flex-col items-start gap-4 sm:mt-10 sm:flex-row sm:items-center sm:gap-6">
           <a
             href="/docs"
-            onMouseEnter={() => setHovered(true)}
-            onMouseLeave={() => setHovered(false)}
             className="cursor-pointer rounded-xl bg-brand-primary px-6 py-3 text-sm font-semibold text-brand-bg transition duration-200 hover:shadow-[0_0_25px_#8CFF2E] active:scale-98"
           >
             Read the docs
@@ -124,55 +120,6 @@ export function HeroSection() {
             View on GitHub &rarr;
           </a>
         </div>
-
-        {/* ================= KALIN LAZER BEAM'Lİ KART KATMANI ================= */}
-        <div className="relative mt-12 overflow-hidden rounded-2xl border border-white/10 bg-zinc-950/90 p-[2px] shadow-[0_0_50px_-12px_rgba(140,255,46,0.15)] sm:mt-16 md:mt-20">
-          
-          {/* Kalınlaştırılmış Lazer Işını (Border Beam) */}
-          <div className="absolute inset-0 pointer-events-none rounded-2xl overflow-hidden">
-            <motion.div
-              className="absolute top-0 left-0 w-[450px] h-[450px] opacity-90 blur-[4px]"
-              style={{
-                // Merkezde saf beyaz, dışa doğru neon yeşili kalın bir gradyan oluşturduk
-                background: "radial-gradient(circle, #ffffff 0%, #8CFF2E 35%, transparent 70%)",
-                transform: "translate(-50%, -50%)",
-              }}
-              animate={{
-                x: [0, 1100, 1100, 0, 0],
-                y: [0, 0, 600, 600, 0],
-              }}
-              transition={{
-                duration: 5, // Lazer daha güçlü aktığı için hızı hafifçe artırıldı
-                repeat: Infinity,
-                ease: "linear",
-              }}
-            />
-          </div>
-
-          <AnimatePresence>
-            {hovered && (
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.2 }}>
-                <div className="absolute -top-px -left-5 z-10 h-24 w-40 bg-[radial-gradient(ellipse_at_top_left,#8CFF2E_0%,transparent_70%)] opacity-40" />
-                <div className="absolute top-0 left-5 h-px w-40 bg-[radial-gradient(ellipse_at_top,#8CFF2E,transparent)] blur-[3px]" />
-              </motion.div>
-            )}
-          </AnimatePresence>
-          
-          <div className="absolute -top-px -right-5 z-10 h-24 w-48 bg-[radial-gradient(ellipse_at_top_right,#8CFF2E_0%,transparent_70%)] opacity-20 sm:-right-8" />
-          <div className="absolute top-0 right-5 h-px w-40 bg-[radial-gradient(ellipse_at_top,#8CFF2E,transparent)] blur-[3px]" />
-
-          {/* İçerik Alanı */}
-          <div className="relative z-20 rounded-[14px] bg-zinc-950 p-1 sm:p-2">
-            <img
-              src="https://assets.aceternity.com/linear-demo.webp"
-              alt="CourierX console preview"
-              width={1000}
-              height={1000}
-              className="h-full w-full rounded-xl object-cover object-bottom-right grayscale contrast-125 opacity-75"
-            />
-          </div>
-        </div>
-
       </div>
     </div>
   );

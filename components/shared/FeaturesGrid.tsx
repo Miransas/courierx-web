@@ -5,7 +5,7 @@ import { Terminal, Copy } from "lucide-react";
 
 export function FeaturesGrid() {
   return (
-    <section className="w-full py-16 px-6 font-sans bg-brand-bg relative overflow-hidden">
+    <section id="features" className="w-full py-16 px-6 font-sans bg-brand-bg relative overflow-hidden scroll-mt-20">
       
       {/* Arka plan için çok hafif bir yansıma */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#8CFF2E] opacity-[0.03] blur-[120px] pointer-events-none" />
